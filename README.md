@@ -4,6 +4,8 @@ ModdingXP is (among) my firsts attempts at writing an application that was actua
 
 *18 years after*, I'm releasing its source code. Find it inside `src/`. The binary file for download is inside `bin/` but will also remain uploaded on [Mediafire](http://www.mediafire.com/?347gfwyfcwc7zcb) for until this website will remain on.
 
+Lastly, I have also uploaded a `EXTRA` folder. Every note, every image, everything that helped me building `ModdingXP` is there. Well, not everything maybe, but this folder is still important to me.
+
 Posted on July 14, 2012	 on juricalleri.net
 
 ---
@@ -16,6 +18,7 @@ Honestly I liked it and and I thought I could write a program to automate this p
 
 <p align="left">
   <img  align="left" width="292" height="102" src="images/testovicinoallorario.jpg">
+  
   The "Alpha" version of `Modding XP` was called "testo vicino all'orario" (text next to the time, for not italians), it was a simple VB6 application with an input box and a button, whatever you wrote in it you could see next to the clock.   
 </p>   
 
