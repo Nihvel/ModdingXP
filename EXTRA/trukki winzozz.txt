@@ -1,0 +1,179 @@
+http://www.dinoxpc.com/Guide/Software/Windows/Registro1.1.pdf
+
+
+Rimuovere dalla memoria le DLL non piu' utilizzate
+E' ormai noto agli utilizzatori di Windows il problema delle DLL che rimangono in memoria anche se le applicazioni vengono chiuse. Questo problema influisce sostanzialmente sulla quantita' di RAM disponibile nel sistema, che viene occupata inutilmente.
+Per poter ripulire la memoria da queste librerie non più utilizzate ed ottimizzare la RAM è necessario agire sul registro di Windows.
+Andate su:
+>START> ESEGUI e digitate REGEDIT
+Cercate ora la chiave:
+>HKEY_LOCAL_MACHINE> SOFTWARE> MICROSOFT> WINDOWS> CURRENT VERSION>EXPLORER
+Create a questo punto la nuova stringa, andando sul menu:
+>MODIFICA> NUOVO> VALORE STRINGA
+Nel nome inserite "AlwaysUnloadDll"
+Fate ora un doppio click sulla stringa appena inserita e come valore inserite "1".
+Chiudete ora il registro di Windows e riavviate il PC.
+Da questo momento dopo che le applicazioni verranno aperte e poi successivamente chiuse saranno anche rimosse dalla memoria le relative DLL.
+
+
+
+Windows senza documenti recenti ( Utilissimo per la vostra privacy familiare )
+Avviare REGEDIT e cercare la chiave HKEY_CURRENT_USER\SOFTWARE\MICROSOFT\WINDOWS\CURRENT VERSION\POLICIES\EXPLORER selezionare Modifica, Nuovo valoreBINARIO e inserire CLEARRECENTDOCSONEXIT come nome fare doppio clic su di esso e inserire 01 00 00 00 ora ad ogni chiusura d i Windows saranno eliminati tutti i collegamenti in dati recenti. 
+
+
+Visualizza la versione di windows sul desktop
+Avviare REGEDIT e cercare la chiave HKEY_CURRENT_USERCONTROL PANNELDESKTOP se non è presente creare la stringa PaintDesktop Version assegnare il valore 1 e riavviate 
+
+
+
+CESTINO COME RINOMINARLO
+Aprire REGEDIT e andare alla chiave HKEY_CLASSES_ROOTCLSID {630FF0405081-101B-9F08-00AA002F954E} e modificare nella finestra di destra ATTRIBUTES da 40 01 00 20 a 70 01 00 20    valore binario
+
+
+Modificare aiuti sull desktop
+Puntando il mouse su alcune icone del desktop compaiono testi esplicativi(pop up) questi possono essere modificati aprire REGEDIT e premere CTRL+T e cercare INFOTIP compariranno tutte le chiavi con i relativi testi se invece si elimina INFOTIP non comparirà più alcun testo. Se invece si vuole impedire a livello generale la visualizzazione cercare la chiave HKEY_CURRENT_USER\SOFTWARE\MICROSOFT\WINDOWS\CURRENT VERSION\EXPLORER\ADVANCED\ e modificare il valore SHOWINFOTIP da 1 a 0
+
+
+Come deframmentare nel miglior modo
+
+Velocizzare l'hard disk in modo ottimale?
+Alla Microsoft si dimenticano le opzioni!
+Se si vuole utilizzare la deframmentazione il modo completo si deve creare un collegamento sul desktop del tipo:
+defrag.exe /h/r
+
+
+Rendere il computer invisibile in rete
+E' possibile fare in modo che il proprio computer risulti "invisibile" al resto della rete a cui è connesso.
+Per effettuare l'operazione aprite il registro di Windows (Start -> Esegui -> digitate regedit, e premete INVIO), cercate la chiave "HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesLanManServerParameters" e create (se non esiste già) un valore DWORD con nome "Hidden" (senza le virgolette), assegnandogli (o modificando) il valore a '1'.
+Per rendere il computer nuovamente visibile basta impostare Hidden a 0.
+
+
+Finestre più veloci
+Dopo aver avviato il programma regedit, entrare nella stringa
+HKEY_CURRENT_USERControl PannelDescktopWindowsMetrics
+in cui si trovano i parametri relativi alla dimezione delle finestre. Aggiungere una nuova stringa chiamata MinAnimate e dargli, infine, il valore 0 per disattivare l'animazione delle finestre, 1 per attivarle.
+
+
+WINDOWS SENZA ESEGUI 
+Per impedire l'attivazione dei programmi con il comando ESEGUI avviare REGEDIT e cercare la chiave HKEY_CURRENT_USER\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\POLICIES\EXPLORER\ selezionare Modifica, Nuovo valore DWORD e inserire il nome NORUN cliccare sul valore e inserire 1
+
+
+Eliminare short cut (la frecciolina dalle icone dei collegamenti)
+Aprire il registro di configurazione (REGEDIT.EXE) alla chiave HKEY_CLASSES_ROOT\Lnkfile\
+elimina la variabile IsShortcut
+ripeti l'operazione alla chiave HKEY_CLASSES_ROOT\Piffile
+(In questo modo i collegamenti non saranno subito riconoscibili come tali, rischiando quindi di cancellare dei file al posto di collegamenti o viceversa; puoi comunque verificarlo selezionando Proprietà dal menu di contesto per i file selezionati)
+
+
+
+Modificare le dimensioni delle icone su Desktop 
+Per personalizzare a piacere le dimensioni delle icone sul Desktop
+apri l'Editor di Registro alla chiave
+HKEY_CURRENT_USER\Control Panel\desktop\WindowMetrics
+imposta (od inseriscila se non esiste già) la variabile di tipo stringa Shell Icon Size al valore desiderato .
+ripeti l'operazione alla chiave
+HKEY_USERS\.Default\Control Panel\desktop\WindowMetrics
+
+
+
+Eliminare il “Cagnolino” di Xp
+
+In Windows XP, ogni volta che andiamo ad utilizzare la funzione di ricerca, ci viene in aiuto il cagnolino Microsoft che scava davanti ai nostri occhi causando tempi di caricamento alquanto lunghi. E quindi ecco il modo per poter escludere questa animazione e far tornare una più sobria e classica finestra di ricerca.
+Clicchiamo su START e successivamente su ESEGUI. Scriviamo nel box che compare regedit
+
+HKEY_CURRENT_USER\ Software\Microsoft\ Windows\ CurrentVersion\ Explorer\ CabinetState
+
+Ora, all’interno di questa chiave, create un nuovo Valore Stringa (Modifica - Nuovo - Valore Stringa) e assegnategli come nome Use Search Asst, facendo attenzione a rispettare gli spazi. Fate doppio clic sulla stringa appena creata e assegnate valore “NO”.
+Chiudete il registro e riavviate il PC per rendere effettive le modifiche.
+Trucco testato su Windows Xp.
+
+
+Avete notato quanto tempo impiega XP per spegnersi???
+Start >> Esegui >> regedit -> OK
+HKEY_LOCAL_MACHINE\SYSTEM\ CurrentControlSet\Control\Session Manager\Memory Management
+
+"ClearPageFileAtShutdown" a valore "0"
+
+HKEY_CURRENT_USER\Control Panel\Desktop
+
+"AutoEndTasks" a valore "1".
+"HungAppTimeout" a valore "1000" (default 5000)
+"WaitToKillAppTimeout" a valore "2000" (default 20000)
+Riavviate il sistema.
+
+
+
+Con questa trucco potrete attivare il modo "verbose" di sistema e visualizzare messaggi di stato che riportano tutti i passaggi del processo di avvio, chiusura, connessione e disconnessione del sistema. Questo vi potrà aiutare in caso di problemi all'avvio/chiusura del sistema.
+
+Start >> Esegui >> regedit -> OK
+e posizionatevi nella chiave:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\ Microsoft\Windows\CurrentVersion\ Policies\System
+
+Sulla destra create un nuovo Valore DWORD
+di nome verbosestatus e valore 1
+Inoltre controllate che la voce DisableStatusMessages sia settata a 0 o non presente.
+
+
+
+CAMBIARE SCRITTA ALLA BARRA SUPERIORE DI INTERNET EXPLORER
+
+La barra superiore BLU di questo programma ha sempre il valore finale: - Microsoft Internet Explorer.
+E' possibile personalizzare tale stringa magari facendola diventare: Pagina iniziale - di Pinco Pallino.
+Per compiere questa operazione bisogna andare ad operare sul Registro di Sistema, tramite il comando: Start-Esegui digitare regedit e poi ok.
+Cercare la chiave:
+Hkey_Local_Machine\software\Microsoft\InternetExplorer\Main
+Probabilmente non ci sarà la stringa "WindowTitle" (se così fosse va creata andando su Modifica-Nuovo-Stringa e scrivere < WindowTitle > senza spazi tra le due parole).
+Una volta creata, selezionare questa stringa e andare su "Modifica" e in "Valore" scrivere il nome che si vuole (es: di Pinco Pallino) e cliccare su ok.
+Chiudere l'editor del registro di configurazione e il gioco è fatto.
+
+
+
+
+CAMBIARE NOME AGLI ORGANI PRINCIPALI DI WINDOWS...
+
+Cestino:
+
+Lanciare Regedit.exe ed espandere HKEY_CLASSES_ROOT\CLSID\{645FF040-5081-101B-9F08-00AA002F954E} e cambiare valore alla stringa predefinita (al posto di "Cestino" inserite il nome da voi desiderato)
+
+Risorse del computer:
+
+Lanciare Regedit.exe ed espandere HKEY_CLASSES_ROT\Software\Classes\CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D} e cambiare valore alla stringa predefinita (al posto di "Risorse del computer" inserite il nome da voi desiderato)
+
+Esplora risorse:
+
+Lanciare Regedit.exe ed espandere HKEY_USERS\.DEFAULT\AppEvents\Schemes\Apps\Explorer e cambiare valore alla stringa predefinita (al posto di "Esplora risorse" inserite il nome da voi desiderato)
+
+
+Documenti:
+
+Lanciare Regedit.exe ed espandere HKEY_CLASSES_ROOT\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103} e cambiare valore alla stringa predefinita (al posto di "Documenti" inserite il nome da voi desiderato)
+
+
+
+
+CAMBIARE LO SFONDO DEL PANNELLO DI CONTROLLO
+
+Questa operazione è possibile con Windows 95/98 e Windows NT. Nella directory c:\windows\system (per Windows NT c:\winnt\system32) create, se non c'è, il file OEMINFO.INI con scritto:
+
+[General]
+Manufacturer=scrivi quello che vuoi
+Model=scrivi quello che vuoi
+
+[Support Information]
+Line1=Riga a disposizione
+Line2=Riga a disposizione
+Line3=Riga a disposizione
+Line4=Riga a disposizione
+Line5=Riga a disposizione
+
+Dove c' è scritto in corsivo & grassetto potete inserire ciò che volete. L'immagine deve essere bitmap (BMP) con risoluzione 180X115 e deve essere salvato con il nome OEMLOGO.BMP nella stessa directory dove si trova OEMINFO.INI
+
+
+
+
+Evitare il blocco di sistema grazie a Regedit 
+Lo spegnimento del sistema operativo si può talvolta bloccare per colpa di qualche applicazione non "terminata". 
+In molti casi il problema è risolvibile con il Registro di Sistema. Procediamo in questo modo: cercate la chiave: 
+HKEY_CURRENT_USERControl PanelDesktop 
+Andate su Modifica/Nuovo/valore stringa e date alla variabile il nome AutoendTasks e il valore 1. Chiudete il Registro e riavviate il PC. 
